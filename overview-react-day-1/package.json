@@ -1,0 +1,17 @@
+{
+  "name": "overview-react-day-1",
+  "version": "1.0.0",
+  "description": "This is my react project",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Bharat",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.16.4"
+  },
+  "dependencies": {
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
+  }
+}
