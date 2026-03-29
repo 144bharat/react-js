@@ -3,15 +3,21 @@
   "version": "1.0.0",
   "description": "This is my react project",
   "scripts": {
+    "start": "parcel index.html --hmr-port 5678",
+    "build": "parcel build index.html",
     "test": "jest"
   },
   "author": "Bharat",
   "license": "ISC",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
   "devDependencies": {
+    "@parcel/watcher-win32-x64": "^2.5.6",
     "parcel": "^2.16.4"
   },
-  "dependencies": {
-    "react": "^19.2.4",
-    "react-dom": "^19.2.4"
-  }
+  "browserslist":[
+    "last 2 chrome versions"
+  ]
 }

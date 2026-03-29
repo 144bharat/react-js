@@ -1,19 +1,20 @@
-//  const root = document.getElementById("root");
-//         const h1 = document.createElement("h1");
-//         h1.innerText="bharat gautam";
-//         root.appendChild(h1);
-
-
-// 14-03-2026 - Day-2: Now i will create the same h1 tag with content using react js
-
 import React from "react";
 import ReactDOM from "react-dom/client";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));        
+
+//THIS IS MY REACT ELEMENT
 const h1 = React.createElement(
     "h1",
     {id:"h1tag"},
-    "I am the text inside h1"
+    "I am the text inside h1 bharat"
 );
-root.render(h1);
+
+//THIS IS JSX
+const jsxh1 = <h1>i am text inside jsx updated</h1>;
+
+
+//JSX (this is not html but kind of same in look) --> parcel (Pass JSX to Babel) --> Babel --> React Element changed (by babel) --> rendered on root.
+
+root.render(jsxh1);
