@@ -35,7 +35,7 @@ const TitleComponent = () => (<h1>This is my Title</h1>);
 
 
 
-      
+
 
 const resDataList = {
   "status": true,
@@ -343,7 +343,7 @@ const myvar = (<h1></h1>);
 //const RestroCard = ({name}) => { //Destructuring on the fly.
 const RestroCard = (props) => { //Destructuring on the fly.
 
-    console.log(props.resData);
+    //console.log(props.resData);
 //const name = props.name;
 
 const {name, avgRatingString, costForTwo, cuisines, veg} = props.resData;
@@ -381,7 +381,7 @@ const Body = () => {
                 {/* <RestroCard resData={resDataList.data.data.cards[1].card.card.gridElements.infoWithStyle.restaurants[0].info}/> */}
 
                 {
-                    resDataList.data.data.cards[1].card.card.gridElements.infoWithStyle.restaurants.map(restro => <RestroCard resData = {restro.info} />)
+                    resDataList.data.data.cards[1].card.card.gridElements.infoWithStyle.restaurants.map(restro => <RestroCard key={restro.info.id} resData = {restro.info} />)
                 }
             </div>
         </main>
