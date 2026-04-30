@@ -148,7 +148,6 @@
 }
 .restroCard > .restroImg{
     width: 100%;
-
 }
 .restroImg>[src]{
     width: 100%;
@@ -165,4 +164,40 @@
 .RatingAndType{
     display: flex;
     justify-content: space-between;
+}
+
+.shimmerContainer{
+    display: flex;
+    gap: 20px;
+    background-color: var(--color-white);
+    flex-wrap: wrap;
+    width: 80%;
+    margin: auto;
+}
+.shimmerCard{
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    height: 350px;
+}
+.shimmerCard > div{
+    background-color: gainsboro;
+}
+.shimmerCard>.img{
+    width: 200px;
+    height: 100px;
+    top: 0px;
+    left: 0px;
+}
+
+.shimmerCard>.txt{
+    width: 100px;
+    height: 20px;
+    margin:10px 0px;
+}
+
+.shimmerCard>.btn{
+    width: 50px;
+    height: 20px;
+    margin:10px 0px;
 }
