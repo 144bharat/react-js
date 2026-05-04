@@ -3,7 +3,7 @@ import { Search, Filter } from "lucide-react";
 //import resDataList from "../utils/mockData";
 import { useState, useEffect} from "react";
 import ShimmerCards from "./ShimmerCards";
-
+import { Link } from "react-router";
 
 
 const Body = () => {
@@ -59,7 +59,7 @@ const updateSearchBarText = (event) => {
 
                 {
                     //resDataList.data.data.cards[1].card.card.gridElements.infoWithStyle.restaurants.map(restro => <RestroCard key={restro.info.id} resData = {restro.info} />)
-                    restroFilteredList.map(restro => <RestroCard key={restro.info.id} resData = {restro.info} />)
+                    restroFilteredList.map(restro => <Link to={"/restaurantmenu/"+restro.info.id} key={restro.info.id} > <RestroCard resData = {restro.info} /></Link>)
                 }
             </div>
         </main>
