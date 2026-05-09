@@ -45,7 +45,7 @@ const updateSearchBarText = (event) => {
         return <ShimmerCards/>;
     }
     return (
-        <main className="main">
+        <div className="body">
             <div className="searchContainer">
                 <input type="text" name="search" placeholder="Search food items..." value={searchBarText} onChange={updateSearchBarText}/>
                 <button type="button" className="searchbtn" onClick={()=>{
@@ -62,7 +62,7 @@ const updateSearchBarText = (event) => {
                     restroFilteredList.map(restro => <Link to={"/restaurantmenu/"+restro.info.id} key={restro.info.id} > <RestroCard resData = {restro.info} /></Link>)
                 }
             </div>
-        </main>
+        </div>
     );
 };
 
