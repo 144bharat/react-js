@@ -1,4 +1,3 @@
-import User from "./User";
 import UserClass from "./UserClass";
 import React from "react";
 
@@ -12,7 +11,6 @@ class About extends React.Component{
         return(
             <div>
                 <h1>My About Us Page - Class Based</h1>
-                <User name={"Function Bharat Component"}/>
                 <hr />
                 <UserClass name={"Class child1"}/>
                 <UserClass name={"Class child2"}/>

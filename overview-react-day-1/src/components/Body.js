@@ -4,19 +4,21 @@ import { Search, Filter } from "lucide-react";
 import { useState, useEffect} from "react";
 import ShimmerCards from "./ShimmerCards";
 import { Link } from "react-router";
-
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
     
-let [restroList,setRestroList]=useState([]); //resDataList.data.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
-
-let [restroFilteredList,setRestroFilteredList]=useState([]);
-
-
-//useEffect = > takes 2 argument: callback(), depArray.
-useEffect(()=>{
-fetchRestroData();
-},[]);
+    let [restroList,setRestroList]=useState([]); //resDataList.data.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
+    
+    let [restroFilteredList,setRestroFilteredList]=useState([]);
+    
+    
+    //useEffect = > takes 2 argument: callback(), depArray.
+    useEffect(()=>{
+        fetchRestroData();
+    },[]);
+    
+let checkOnlineStatus = useOnlineStatus();
 
 let fetchRestroData = async () => {
     let dataStream = await fetch("https://namastedev.com/api/v1/listRestaurants");
@@ -40,6 +42,11 @@ const updateSearchBarText = (event) => {
     //console.log("[A]: "+searchBarText);
 }
 
+
+    if(!checkOnlineStatus)
+    {
+        return(<h4>I guess you're offline!!</h4>);
+    }
     //Conditional rendering
     if(restroFilteredList.length === 0){
         return <ShimmerCards/>;

@@ -1,11 +1,10 @@
-import React from "react";
+import React, {lazy, Suspense} from "react";
 import ReactDOM from "react-dom/client";
 import { UserRoundPen , Search, SquareDot, SquareMinus } from "lucide-react";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Body from "./components/Body";
-import About from "./components/About";
 import Contact from "./components/Contact";
 import RestaurantMenu from "./components/RestaurantMenu";
 import Error from "./components/Error";
@@ -13,6 +12,11 @@ import Error from "./components/Error";
 //createBrowserRouter ==> Configuration to create routes
 //RouterProvider ==> Component provided by react-router to provide defined routes throughout the application.
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router";
+//INSTEAD OF IMPORTING DIRECTLY NOW WE WILL LOAD IT DYNAMICALLY ON DEMAND: import Grocery from "./components/Grocery";
+//import About from "./components/About";
+
+const Grocery = lazy(()=> import("./components/Grocery"));
+const About = lazy(()=> import("./components/About"));
 
 const root = ReactDOM.createRoot(document.getElementById('root'));        
 
@@ -38,7 +42,7 @@ const appRouter = createBrowserRouter([
             },
             {
                 path:'/about',
-                element:<About/>,
+                element:<Suspense fallback={<h1>I will be displayed unless the component loads.....</h1>}><About/></Suspense>,
             },
             {
                 path:'/contact',
@@ -47,6 +51,10 @@ const appRouter = createBrowserRouter([
             {
                 path:'/restaurantmenu/:id',
                 element:<RestaurantMenu/>
+            },
+            {
+                path:'/grocery',
+                element:<Suspense fallback={<h1>I will be displayed unless the component loads.....</h1>}><Grocery/></Suspense>
             }
         ],
         errorElement:<Error/>
