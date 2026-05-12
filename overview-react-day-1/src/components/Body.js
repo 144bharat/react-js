@@ -52,16 +52,19 @@ const updateSearchBarText = (event) => {
         return <ShimmerCards/>;
     }
     return (
-        <div className="body">
-            <div className="searchContainer">
-                <input type="text" name="search" placeholder="Search food items..." value={searchBarText} onChange={updateSearchBarText}/>
-                <button type="button" className="searchbtn" onClick={()=>{
-                    let searchedRestroList = restroList.filter(restroObj => restroObj.info.name.toLowerCase().includes(searchBarText.toLowerCase())); //resDataList.data.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
-                    setRestroFilteredList(searchedRestroList);
-                }}><Search/></button>
-                <button type="button" className="topratedfilterbtn" onClick={filter4StarAboveRestros}>Top Rated Restraurants<Filter/> </button>
+        <div className="body container">
+            <div className="searchContainer flex justify-between items-center p-[20px]">
+                <div className="w-[70%]">
+                    <input type="text" name="search" placeholder="Search food items..." value={searchBarText} onChange={updateSearchBarText} className=" align-middle w-1/2 border shadow-sm rounded-[5px] py-[5px] mx-1"/>
+                    <button type="button" className="searchbtn align-middle bg-orange-100 w-[10%] h-full hover:cursor-pointer py-[5px]" onClick={()=>{
+                        let searchedRestroList = restroList.filter(restroObj => restroObj.info.name.toLowerCase().includes(searchBarText.toLowerCase())); //resDataList.data.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
+                        setRestroFilteredList(searchedRestroList);
+                    }}><Search className="text-lime-500 mx-auto" /></button>
+                </div>
+
+                <button type="button" className="topratedfilterbtn align-middle h-full flex w-[30%] bg-olive-950 text-white shadow-lg rounded-[5px] py-[5px] justify-center" onClick={filter4StarAboveRestros}>Top Rated Restraurants<Filter className="w-[20px]"/> </button>
             </div>
-            <div className="restroContainer">
+            <div className="restroContainer w-[100%] flex flex-wrap gap-2 justify-center mx-auto">
                 {/* <RestroCard resData={resDataList.data.data.cards[1].card.card.gridElements.infoWithStyle.restaurants[0].info}/> */}
 
                 {
