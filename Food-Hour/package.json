@@ -1,7 +1,7 @@
 {
-  "name": "overview-react-day-1",
+  "name": "Food-Hour",
   "version": "1.0.0",
-  "description": "This is my react project",
+  "description": "This is my Food-Hour react project",
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html",

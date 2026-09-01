@@ -2,8 +2,16 @@ import { ShoppingCart } from 'lucide-react';
 import { LOGO_URL } from '../utils/constants';
 import { Link } from 'react-router';
 import useOnlineStatus from '../utils/useOnlineStatus';
+import UserContext from '../utils/userContext';
+import { useContext } from 'react';
+
 const Header = () => {
+
   const onlineStatus = useOnlineStatus();
+
+  const {loggedInUserName} = useContext(UserContext);
+  
+
   return (
     <div className="header not-dark:bg-orange-200 bg-olive-950 flex justify-between items-center px-5 shadow-lg not-dark:text-olive-950 text-white font-semibold">
       <div className="logoContainer">
@@ -29,7 +37,7 @@ const Header = () => {
       </ul>
       <div className="userProfile">
         {/* will use this if user logged in: <UserRoundPen/> */}
-        Sign-up / log-in
+        {(loggedInUserName)? loggedInUserName: "Sign-up / log-in"}
       </div>
     </div>
   );

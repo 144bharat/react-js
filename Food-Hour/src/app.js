@@ -1,4 +1,4 @@
-import React, {lazy, Suspense} from "react";
+import React, {lazy, Suspense, useState} from "react";
 import ReactDOM from "react-dom/client";
 import { UserRoundPen , Search, SquareDot, SquareMinus } from "lucide-react";
 
@@ -15,6 +15,8 @@ import { createBrowserRouter, Outlet, RouterProvider } from "react-router";
 //INSTEAD OF IMPORTING DIRECTLY NOW WE WILL LOAD IT DYNAMICALLY ON DEMAND: import Grocery from "./components/Grocery";
 //import About from "./components/About";
 
+import UserContext from "/src/utils/UserContext.js";
+
 const Grocery = lazy(()=> import("./components/Grocery"));
 const About = lazy(()=> import("./components/About"));
 
@@ -22,11 +24,15 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 
 const AppLayout = () => {
+const [loggedInUserName, setLoggedInUserName] = useState("Bharat");
+
     return (
         <div>
+            <UserContext.Provider value={{loggedInUserName}}>
             <Header/>
             <main><Outlet/></main>
             <Footer/>
+            </UserContext.Provider>
         </div>
     )
 }
