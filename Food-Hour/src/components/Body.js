@@ -42,7 +42,7 @@ const Body = () => {
     //setRestroList(restroListDataFromApi?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
 
     setRestroList(listData);
-    console.log(listData);
+    // console.log(listData);
     /*setRestroFilteredList(
       restroListDataFromApi?.data?.data?.cards[1]?.card?.card?.gridElements
         ?.infoWithStyle?.restaurants
@@ -63,6 +63,11 @@ const Body = () => {
 
   const updateSearchBarText = (event) => {
     setSearchBarText(event.target.value.toLowerCase());
+    
+    //If user removed all search text then we automatically loads all the restaurants.
+    if(event.target.value === ""){
+        setRestroFilteredList(restroList);
+    }
     //console.log("[A]: "+searchBarText);
   };
 
@@ -75,19 +80,19 @@ const Body = () => {
   }
   return (
     <div className="body container">
-      <div className="searchContainer flex justify-between items-center p-5">
-        <div className="w-[70%]">
+      <div className="searchContainer flex justify-between items-center md:p-5 py-5 md:gap-y-0 gap-y-5 md:flex-row flex-col">
+        <div className="md:w-[70%] w-full flex gap-2">
           <input
             type="text"
             name="search"
             placeholder="Search food items..."
             value={searchBarText}
             onChange={updateSearchBarText}
-            className=" align-middle w-1/2 border shadow-sm rounded-[5px] py-1.25 mx-1"
+            className="md:w-1/2 w-full border p-1 shadow-sm rounded-md rounded-r-none"
           />
           <button
             type="button"
-            className="searchbtn align-middle bg-orange-100 w-[10%] h-full hover:cursor-pointer py-1.25"
+            className="searchbtn align-middle bg-olive-950 text-white w-[10%] h-full rounded-md  rounded-l-none hover:cursor-pointer p-1"
             onClick={() => {
               let searchedRestroList = restroList.filter((restroObj) =>
                 restroObj.info.name
@@ -97,18 +102,22 @@ const Body = () => {
               setRestroFilteredList(searchedRestroList);
             }}
           >
-            <Search className="text-lime-500 mx-auto" />
+            <Search className="p-2 w-12 h-8 mx-auto hover:scale-150 transition-transform" />
           </button>
         </div>
 
-        <button
-          type="button"
-          className="topratedfilterbtn align-middle h-full flex w-[30%] bg-olive-950 text-white shadow-lg rounded-[5px] py-1.25 justify-center"
-          onClick={filter4StarAboveRestros}
-        >
-          Top Rated Restraurants
-          <Filter className="w-5" />{' '}
-        </button>
+        <div className='flex gap-2 bg-olive-950 text-white shadow-lg rounded-md items-center flex-nowrap cursor-pointer'>
+            <button
+              type="button"
+              className="topratedfilterbtn p-1"
+              onClick={filter4StarAboveRestros}
+            >
+              Top Rated Restraurants
+            </button>
+            <Filter className="w-8 hover:scale-110" />
+        </div>
+        
+
       </div>
       <div className="restroContainer w-full flex flex-wrap gap-2 justify-center mx-auto">
         {/* <RestroCard resData={resDataList.data.data.cards[1].card.card.gridElements.infoWithStyle.restaurants[0].info}/> */}
@@ -120,7 +129,7 @@ const Body = () => {
               
               {/* *****NOTE: USING HIGHER ORDER COMPONENT WE WILL TRY ENHANCE RESTAURANTCARD BY ADDING 'Promoted' LABEL */}
               {/* "restro.info.promoted"{restro.info.promoted} */}
-              {restro.info.promoted? (<PromotedRestroCard resData={restro.info}/>): (<RestroCard resData={restro.info} />)}
+              {restro.info.promoted? (<PromotedRestroCard resData={restro.info} />): (<RestroCard resData={restro.info} />)}
             </Link>
           ))
         }

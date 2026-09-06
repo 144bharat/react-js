@@ -3,12 +3,12 @@ import { RestroCardLogo } from '../utils/constants';
 
 const RestroCard = (props) => {
   //Destructuring on the fly.
-  console.log("NORMAL CALLED:"+ JSON.stringify(props))
+  // console.log("NORMAL CALLED:"+ JSON.stringify(props))
 
   const { name, avgRatingString, costForTwo, cuisines, veg } = props.resData;
 
   return (
-    <div className="restroCard border-2 border-gray-400 hover:border-lime-200 shadow-lg h-full">
+    <div className="restroCard border-2 border-gray-400 hover:border-lime-200 hover:animate-pulse shadow-lg h-full">
       <div className="restroImg h-[50%]">
         <img
           className="w-full h-full rounded-b-lg shadow-md"
@@ -45,7 +45,7 @@ const RestroCard = (props) => {
 //TAKE COMPONENT --> ENHANCE IT --> RETURN New Enhanced COMPONENT:
 
 export const withPromotedHighOrderComp = (RestroCard) => {
-  console.log("HOC CALLED")
+  // console.log("HOC CALLED")
   // TAKE RestroCard Component
   return (props) => { //THIS props WE GOT FROM Body.js --> PromotedRestroCard COMPONENT WE PASSED (PROP).
     // RETURN NEW Component
